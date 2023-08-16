@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair Type Classifier</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/styles.css') }}">
+    <style>
+        /* Custom styles for your specific elements */
+        body {
+            
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        /* Center the form */
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Prevent Bootstrap from affecting images */
+        .content img {
+            max-width: 100%; 
+            height: auto;
+            margin: 0; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{url_for('static',filename='/images/logo.png')}}" alt="Logo" width="24" height="39">
+            <h1 style="color:#333; font-size: 36px;">ManeSpectrum</h1>
+        </header>
+        <section class="content">
+            <div class="images">
+                <img src="{{url_for('static',filename='/images/img1.jpg')}}" alt="Hair Image 1" width="300" height="200">
+                <img src="{{url_for('static',filename='/images/img2.jpg')}}" alt="Hair Image 2" width="300" height="200">
+            </div>
+        </section>
+        <div class="container mt-5">
+           <!-- ... (previous code) ... -->
+<form method="POST" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="file1" class="form-label">Choose an image (jpg, jpeg, png) for hair type</label>
+            <input type="file" id="file1" name="file1" accept=".jpg, .jpeg, .png" class="form-control">
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="file2" class="form-label">Choose an image (jpg, jpeg, png) for hair character</label>
+            <input type="file" id="file2" name="file2" accept=".jpg, .jpeg, .png" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <input type="submit" name="prediction_type" value="Predict Hair Type">
+        </div>
+        <div class="col-md-6 mb-3">
+            <input type="submit" name="prediction_type" value="Predict Hair Character">
+        </div>
+    </div>
+</form>
+<!-- ... (remaining code) ... -->
+ 
+            {% if error %}
+                <p>{{ error }}</p>
+            {% endif %}
+        </div>
+    </div>
+    <!-- Bootstrap JS scripts (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZVz5IaEn8VaS7AtIDHXT5n9JqjZX4Hw7W2kE9XJ7h4CsknE+8E5DkXv2TA3Ia4l" crossorigin="anonymous"></script>
+</body>
+</html>

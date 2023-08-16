@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add necessary meta tags, title, styles, and scripts here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair Type Classifier</title>
+    <!-- Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/styles.css') }}">
+    <style>
+        /* Custom styles for your specific elements */
+        p {
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Center the form */
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Prevent Bootstrap from affecting images */
+        .content img {
+            max-width: 100%;
+            height: auto;
+            margin: 0;
+        }
+
+        /* New styles for image containers */
+        .left-image {
+            flex: 1;
+            text-align: left;
+        }
+
+        .right-image {
+            flex: 1;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Your existing template content goes here -->
+
+        {% if result_type1 %}
+            <div class="col-md-6">
+                <p>Result:<b>{{ result_type1 }} hair</b></p>
+            </div>
+            {% if summary %}
+            <div class="col-md-6">
+                {% if result_type1 == "Curly" %}
+                <div class="images">
+                    <div class="left-image">
+                        <img src="{{url_for('static',filename='/images/curl_f.jpg')}}" alt="Hair Image 1" width="300" height="200">
+                    </div>
+                    <div class="right-image">
+                        <img src="{{url_for('static',filename='/images/curl_m.jpg')}}" alt="Hair Image 1" width="300" height="200">
+                    </div>
+                <p>{{ result_type1 }} Hair Summary: {{ summary }}</p>
+                {% endif %}
+                {% if result_type1 == "Straight" %}
+                <div class="images">
+                    <div class="left-image">
+                        <img src="{{url_for('static',filename='/images/straight_f.jpg')}}" alt="Hair Image 1" width="300" height="200">
+                    </div>
+                    <div class="right-image">
+                        <img src="{{url_for('static',filename='/images/straight_m.jpg')}}" alt="Hair Image 1" width="300" height="200">
+                    </div>
+                <p>{{ result_type1 }} Hair Summary: {{ summary }}</p>
+                {% endif %}
+                {% if result_type1 == "Wavy" %}
+                <div class="images">
+                    <div class="left-image">
+                        <img src="{{url_for('static',filename='/images/wavy_f.jpg')}}" alt="Hair Image 1" width="300" height="200">
+                    </div>
+                    <div class="right-image">
+                        <img src="{{url_for('static',filename='/images/wavy_m.jpg')}}" alt="Hair Image 1" width="300" height="200">
+                    </div>
+                <p>{{ result_type1 }} Hair Summary: {{ summary }}</p>
+                {% endif %}
+            </div>
+            {% endif %} 
+        </div>
+        {% endif %}
+        {% if result_type2 %}
+            <div class="col-md-6">
+                <div class="images">
+                    <div class="left-image">
+                        <img src="{{url_for('static',filename='/images/ray.jpg')}}" alt="Hair Image 1" width="300" height="200">
+                    </div>
+                    <div class="right-image">
+                        <img src="{{url_for('static',filename='/images/ray_m.png')}}" alt="Hair Image 1" width="300" height="200">
+                    </div>
+                <p>Result:<b>{{ result_type2 }} </b></p>
+            
+        </div>
+    </div>
+        <p align="justify"><b>Hair Care:</b> {{ summary }}</p>
+        {% endif %}
+
+    <!-- Bootstrap JS scripts (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ZVz5IaEn8VaS7AtIDHXT5n9JqjZX4Hw7W2kE9XJ7h4CsknE+8E5DkXv2TA3Ia4l" crossorigin="anonymous"></script>
+</body>
+</html>
